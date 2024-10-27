@@ -1,4 +1,5 @@
 import Category from '#models/category'
+import Discount from '#models/discount'
 import Product from '#models/product'
 import type { HttpContext } from '@adonisjs/core/http'
 import app from '@adonisjs/core/services/app'
@@ -39,6 +40,12 @@ export default class ProductsController {
 
     await Product.create(data)
     return response.redirect().toRoute('product')
+  }
+
+  async show({ params, view }: HttpContext) {
+    const product = await Product.findOrFail(params.id)
+    const discount = await Discount.all()
+    return view.render('showproduct', { product, discount })
   }
 
   async edit({ view, params }: HttpContext) {

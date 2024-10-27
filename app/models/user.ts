@@ -5,6 +5,7 @@ import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import Settlement from './settlement.js'
+import Cart from './cart.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -38,4 +39,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @hasMany(() => Settlement)
   declare settlements: HasMany<typeof Settlement>
+
+  @hasMany(() => Cart)
+  declare carts: HasMany<typeof Cart>
 }

@@ -14,6 +14,7 @@ export default class extends BaseSchema {
         .unsigned()
         .references('discounts.id')
         .onDelete('CASCADE')
+      table.string('notes').nullable()
       table.integer('quantity')
       table.decimal('subtotal', 10, 2).nullable()
       table.timestamp('created_at')
