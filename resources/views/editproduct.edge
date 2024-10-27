@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Edit Product</title>
+    @include('partials/head')
+</head>
+
+<body class="bg-gray-50">
+    <!-- sidenav  -->
+    @include('partials/left-side')
+    <!-- end sidenav -->
+    <main class="md:ml-64 xl:ml-72 2xl:ml-72">
+        <!-- Navbar -->
+        @include('partials/navbar')
+        <!-- end Navbar -->
+        <div class="p-5">
+            <div class='w-full bg-white rounded-xl h-fit mx-auto'>
+                <div class="p-3 text-center">
+                    <h1 class="font-extrabold text-3xl">Edit product</h1>
+                </div>
+                <div class="p-6">
+                    <form class="space-y-3" method="post" action="{{ route('updateproduct', { id: product.id }) }}"
+                        enctype="multipart/form-data">
+                        {{ csrfField() }}
+                        <div class="grid grid-cols-1 xl:grid-cols-3 gap-2">
+                            <div class="space-y-2">
+                                <label class="font-semibold text-black">Nama produk:</label>
+                                <input type="text"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
+                                    id="name" name="name" value="{{ product.name }}" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="font-semibold text-black">Harga produk:</label>
+                                <input type="number"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
+                                    id="price" name="price" value="{{ product.price }}" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="font-semibold text-black">Kategori:</label>
+                                <select id="category" name="category_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
+                                    required>
+                                    <option></option>
+                                    @each (item in categories)
+                                    <option value="{{ item.id }}">{{ item.name }}</option>
+                                    @endeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-semibold text-black">Deskripsi produk:</label>
+                            <textarea class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
+                                id="description" name="description" maxlength="200"
+                                required>{{ product.description }}</textarea>
+                            <p class="text-gray-500 text-right"><span id="charCount"></span>/200 characters</p>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-semibold text-black">Gambar produk:</label>
+                            <input type="file"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full" id="img"
+                                name="img" value="{{ product.img }}" required>
+                        </div>
+                        <button type="submit"
+                            class="bg-blue-500 text-white p-2 w-fit hover:text-black rounded-lg">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    document.getElementById('description').addEventListener('input', function () {
+        var maxLength = 200;
+        var currentLength = this.value.length;
+
+        document.getElementById('charCount').innerText = currentLength + '/' + maxLength;
+
+        if (currentLength >= maxLength) {
+            this.setAttribute('disabled', true);
+        } else {
+            this.removeAttribute('disabled');
+        }
+    });
+</script>
+
+</html>

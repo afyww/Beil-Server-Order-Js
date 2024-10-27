@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Qr</title>
+    @include('partials/head')
+    <link href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-50">
+    <!-- sidenav  -->
+    @include('partials/left-side')
+    <!-- end sidenav -->
+    <main class="md:ml-64 xl:ml-72 2xl:ml-72">
+        <!-- Navbar -->
+        @include('partials/navbar')
+        <!-- end Navbar -->
+        <div class="p-5">
+            <div class="w-full rounded-xl bg-white h-fit mx-auto">
+                <div class="p-8">
+                    <div class="space-y-8">
+                        <div class="mx-auto text-center">
+                            <h1 class="text-3xl">QR Code for {{ user.fullName }}</h1>
+                        </div>
+                        <div class="mx-auto text-center">
+                            <img class="mx-auto" src="{{ asset('storage/uploads/' + user.id + '.svg') }}" alt="QR Code" style="width: 800px; height: auto;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
