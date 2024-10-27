@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Add Discount</title>
+    <title>Add Expense</title>
     @include('partials/head')
 </head>
 
@@ -17,23 +17,23 @@
         <div class="p-5">
             <div class="w-full bg-white rounded-xl h-fit mx-auto">
                 <div class="p-3 text-center">
-                    <h1 class="font-extrabold text-3xl">Add discount</h1>
+                    <h1 class="font-extrabold text-3xl">Add expense</h1>
                 </div>
                 <div class="p-6">
-                    <form class="space-y-3" method="post" action="{{ route('postdiscount') }}"
+                    <form class="space-y-3" method="post" action="{{ route('postexpense') }}"
                         enctype="multipart/form-data">
                         {{ csrfField() }}
                         <div class="space-y-2">
-                            <label class="font-semibold text-black">Discount:</label>
+                            <label class="font-semibold text-black">Expense:</label>
                             <input type="text"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full" id="name"
                                 name="name" placeholder="Name" required />
                         </div>
                         <div class="space-y-2">
-                            <label class="font-semibold text-black">Percentage:</label>
+                            <label class="font-semibold text-black">Nominal:</label>
                             <input type="number"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full" id="name"
-                                name="percentage" placeholder="Percentage" required />
+                                name="nominal" placeholder="Nominal" required />
                         </div>
                         <button type="submit" class="bg-blue-500 text-white p-2 w-fit hover:text-black rounded-lg">
                             Submit
