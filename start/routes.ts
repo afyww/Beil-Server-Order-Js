@@ -10,6 +10,7 @@ const DiscountController = () => import('#controllers/discounts_controller')
 const ExpenseController = () => import('#controllers/expenses_controller')
 const SettlementController = () => import('#controllers/settlements_controller')
 const ChairController = () => import('#controllers/chairs_controller')
+const HistoriesController = () => import('#controllers/histories_controller')
 const QrController = () => import('#controllers/qrs_controller')
 
 // AUTH
@@ -65,6 +66,8 @@ router
     router.get('/addstart', [SettlementController, 'vstart']).as('addstart')
     router.post('/poststart', [SettlementController, 'poststart']).as('poststart')
     router.get('/addtotal', [SettlementController, 'vtotal']).as('addtotal')
+    //HISTORY
+    router.get('/history', [HistoriesController, 'index']).as('history')
     //LOGOUT
     router.post('/logout', [AuthController, 'logout']).as('logout')
   })

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>History</title>
+    @include('partials/head')
+    <link href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-50">
+    <!-- sidenav  -->
+    @include('partials/left-side')
+    <!-- end sidenav -->
+    <main class="md:ml-64 xl:ml-72 2xl:ml-72">
+        <!-- Navbar -->
+        @include('partials/navbar')
+        <!-- end Navbar -->
+        <div class="p-5">
+            <div class="w-full rounded-xl bg-white h-fit mx-auto">
+                <div class="p-3">
+                    <div class="flex">
+                        <h1 class="font-extrabold text-3xl">History</h1>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="overflow-auto">
+                        <table id="myTable" class="bg-gray-50 border-2">
+                            <thead class="w-full">
+                                <th>No</th>
+                                <th>Date</th>
+                                <th>Order Id</th>
+                                <th>Nama</th>
+                                <th>Chair</th>
+                                <th>Order</th>
+                                <th>Payment</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </thead>
+                            <tbody>
+                                @each(histories in item)
+                                    <tr class="border-2">
+                                        <td></td>
+                                        <td>{{ item.createdAt }}</td>
+                                        <td>{{ item.no_order }}</td>
+                                        <td>{{ item.name }}</td>
+                                        <td>{{ item.chair }}</td>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            {{ item.payment_type }}
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <h1
+                                                class="p-2 w-full text-white rounded-xl text-center @if ($item->status == 'settlement') bg-green-500 @else @endif">
+                                                {{ item.status }}
+                                            </h1>
+                                        </td>
+                                    </tr>
+                                @endeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let table = new DataTable('#myTable', {
+                columnDefs: [
+                    {
+                        targets: 0, // Index of the 'No' column
+                        render: function (data, type, row, meta) {
+                            return meta.row + 1; // Auto-increment based on row index
+                        },
+                    },
+                    {
+                        targets: 1, // Index of the 'Date' column
+                        render: function (data, type, row) {
+                            var date = new Date(data);
+                            return date.toLocaleDateString(); // Format the date as needed
+                        },
+                    },
+                ],
+            });
+        });
+    </script>
+</body>
+</html>
