@@ -42,4 +42,5 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @hasMany(() => Cart)
   declare carts: HasMany<typeof Cart>
+  name: any
 }

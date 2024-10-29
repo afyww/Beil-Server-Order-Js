@@ -32,5 +32,5 @@ export default class Settlement extends BaseModel {
   declare updatedAt: DateTime
 
   @belongsTo(() => User)
-  declare users: BelongsTo<typeof User>
+  declare user: BelongsTo<typeof User>
 }

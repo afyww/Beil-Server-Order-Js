@@ -26,9 +26,11 @@ router
     //ORDER
     router.get('/order', [OrdersController, 'index']).as('order')
     router.get('/addorder', [OrdersController, 'create']).as('addorder')
+    router.post('/postorder', [OrdersController, 'store']).as('postorder')
     //CART
     router.get('/addcart', [CartsController, 'create']).as('addcart')
     router.post('/postcart', [CartsController, 'store']).as('postcart')
+    router.get('/delcart/:id', [CartsController, 'destroy']).as('delcart')
     //USER
     router.get('/user', [UsersController, 'index']).as('user')
     router.get('/adduser', [UsersController, 'create']).as('adduser')

@@ -32,5 +32,5 @@ export default class Order extends BaseModel {
   declare updatedAt: DateTime
 
   @belongsTo(() => Cart)
-  declare carts: BelongsTo<typeof Cart>
+  declare cart: BelongsTo<typeof Cart>
 }

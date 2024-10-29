@@ -15,7 +15,7 @@ interface TotalData {
 
 export default class SettlementsController {
   async index({ view }: HttpContext) {
-    const settlements = await Settlement.query().preload('users')
+    const settlements = await Settlement.query().preload('user')
     return view.render('settlement', { settlements })
   }
 

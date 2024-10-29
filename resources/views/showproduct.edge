@@ -43,7 +43,7 @@
                                             <p class='w-full text-xl font-medium rounded-xl p-2'>*Discount</p>
                                             <select name="discountId" class='border p-2 w-full bg-gray-50 rounded-xl'>
                                                 <option value="">No Discount</option>
-                                                @each(item in discounts)
+                                                @each(item in discount)
                                                 <option value="{{ item.id }}">{{ item.name }} - {{ item.percentage }}%
                                                 </option>
                                                 @endeach

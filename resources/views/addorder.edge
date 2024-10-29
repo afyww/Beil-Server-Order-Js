@@ -30,6 +30,10 @@
                                     <div class='p-2 rounded-xl relative bg-red-900 space-y-2'>
                                         <div class='space-y-2'>
                                             <div class='bg-gray-100 p-2 rounded-xl '>
+                                                <img src="{{ asset('storage/uploads/' + item.product.img.split('/').pop()) }}"
+                                                alt="Product Image"
+                                                class='mx-auto my-auto w-14 h-17 rounded-xl relative' />
+
                                             </div>
                                             <div class='space-y-1'>
                                                 <div class="flex justify-between">
@@ -42,6 +46,12 @@
                                                 <p class='font-light text-sm text-white line-clamp-1'>
                                                     -{{ item.notes }}
                                                 </p>
+                                                <p class="font-light text-sm text-white line-clamp-1">
+                                                    -
+                                                    @if(item.discount)
+                                                        {{ item.discount.name }} - {{ item.discount.percentage }} %
+                                                    @endif
+                                                </p>                                                
                                                 <div class='flex space-x-2'>
                                                     <svg width="15" height="18" viewBox="0 0 13 12" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +76,10 @@
                                                 </div>
                                             </div>
                                             <div class="bg-red-500 text-white p-2 rounded-lg text-center">
-
+                                                <a href="{{ route('delcart', { id: item.id }) }}">
+                                                    <h1 class="">
+                                                        Hapus</h1>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +93,7 @@
                             <a class="hover:text-black text-white text-xl bg-green-500 p-2 w-fit rounded-lg" href="{{ route('addcart') }}">Add
                                 Product</a>
                         </div>
-                        <form class="space-y-5" method="post" action="">
+                        <form class="space-y-5" method="post" action="{{ route('postorder') }}">
                             {{ csrfField() }}
                             <div class="space-y-2">
                                 <label class="font-semibold text-black text-lg">Atas nama:</label>

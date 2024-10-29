@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.string('no_order')
       table.string('order')
       table.string('payment_type')
-      table.decimal('total_amount', 10, 2).nullable()
+      table.integer('total_amount').nullable()
       table.string('status')
       table.integer('settlement_id').unsigned().references('settlements.id').onDelete('CASCADE')
       table.timestamp('created_at')

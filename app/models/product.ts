@@ -9,19 +9,19 @@ export default class Product extends BaseModel {
   declare id: number
 
   @column()
-  declare name: string
+  declare name: String
 
   @column()
-  declare price: number
+  declare price: Number
 
   @column()
-  declare img: string
+  declare img: String
 
   @column()
-  declare description: string
+  declare description: String
 
   @column()
-  declare categoryId: number
+  declare categoryId: Number
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

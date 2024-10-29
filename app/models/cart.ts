@@ -22,7 +22,7 @@ export default class Cart extends BaseModel {
   declare updatedAt: DateTime
 
   @belongsTo(() => User)
-  declare users: BelongsTo<typeof User>
+  declare user: BelongsTo<typeof User>
 
   @hasMany(() => CartMenu)
   declare cartMenus: HasMany<typeof CartMenu>

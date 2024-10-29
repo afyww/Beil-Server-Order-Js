@@ -16,7 +16,7 @@ export default class extends BaseSchema {
         .onDelete('CASCADE')
       table.string('notes').nullable()
       table.integer('quantity')
-      table.decimal('subtotal', 10, 2).nullable()
+      table.integer('subtotal').nullable()
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
